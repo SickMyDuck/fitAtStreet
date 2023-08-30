@@ -1,0 +1,19 @@
+/* 
+  Localizable.strings
+  fitAtStreet
+
+  Created by Ruslan Sadritdinov on 23.08.2023.
+  
+*/
+
+// Welcome screen
+"welcome.registration.title" = "Let's introduce yourself!";
+"welcome.registration.enter_name" = "Your name is:";
+"welcome.registration.enter_age" = "Your age is:";
+"welcome.registration.enter_sex" = "Your gender is:";
+
+
+
+// Common
+
+"button.next.title" = "Next";
