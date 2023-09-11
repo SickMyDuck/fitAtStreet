@@ -8,8 +8,10 @@
 
 import UIKit
 
-final class RegistrationViewController: UIViewController {
+final class RegistrationViewController: BaseViewController<RegistrationViewModel> {
 
+
+    // MARK: - Private Properties
     private let enterNameStack = UIStackView()
     private let enterNameLabel = UILabel()
     private let enterNameTextField = TextField(placeholder: "")
@@ -30,10 +32,11 @@ final class RegistrationViewController: UIViewController {
     private var currentStack = UIStackView()
     private var stackToShow = UIStackView()
 
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .white
         configure()
     }
 }
@@ -75,6 +78,7 @@ private extension RegistrationViewController {
 
 }
 
+// MARK: - StackView Section
 private extension RegistrationViewController {
 
     func setupStackView(with stackView: UIStackView, firstView: Bool) {
@@ -93,6 +97,7 @@ private extension RegistrationViewController {
 
 }
 
+// MARK: - Label And TextField Section
 private extension RegistrationViewController {
     func setupLabel(with stackView: UIStackView, label: UILabel) {
         stackView.addArrangedSubview(label)
@@ -132,8 +137,10 @@ private extension RegistrationViewController {
     func configureGenderButton(button: UIButton, gender: Gender) {
 
         genderPickerStackView.addArrangedSubview(button)
-        let title = gender == .male ? "Male" : "Female"
-        button.setTitle(title, for: .normal)
+
+        let imageName = gender == .male ? "maleIcon" : "femaleIcon"
+        button.setImage(UIImage(named: imageName), for: .normal)
+        button.adjustsImageWhenHighlighted = false
 
         button.translatesAutoresizingMaskIntoConstraints = false
 
@@ -141,14 +148,56 @@ private extension RegistrationViewController {
 
         button.backgroundColor = gender == .male ? .systemBlue : .systemPink
         button.titleLabel?.font = UIFont(name: "Roboto", size: 14)
-        button.layer.cornerRadius = .large
+        button.layer.cornerRadius = .small
 
         NSLayoutConstraint.activate([
-            button.widthAnchor.constraint(equalToConstant: 80),
+            button.widthAnchor.constraint(equalToConstant: 40),
             button.heightAnchor.constraint(equalToConstant: 60)
         ])
+
+        addActionToGenderButton(gender: gender)
     }
 
+    func addActionToGenderButton(gender: Gender) {
+        if gender == .male {
+            maleButton.addTarget(self, action: #selector(maleButtonTapped), for: .touchUpInside)
+        } else {
+            femaleButton.addTarget(self, action: #selector(femaleButtonTapped), for: .touchUpInside)
+        }
+    }
+
+    @objc func maleButtonTapped() {
+
+        Vibration.light.vibrate()
+
+        UIView.animate(withDuration: 0.15, delay: 0, usingSpringWithDamping: 0.2, initialSpringVelocity: 0.5, options: .curveEaseIn, animations:  {
+            self.maleButton.transform = CGAffineTransform(scaleX: 0.92, y: 0.92)
+        }) { _ in
+            UIView.animate(withDuration: 0.15, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 4, animations: {
+                self.maleButton.transform = CGAffineTransform(scaleX: 1, y: 1)
+            } , completion: nil)
+        }
+        self.femaleButton.layer.borderWidth = 0
+        self.maleButton.layer.borderWidth = 3
+        self.maleButton.layer.borderColor = UIColor.blue.cgColor
+
+    }
+
+    @objc func femaleButtonTapped() {
+
+        Vibration.light.vibrate()
+
+        UIView.animate(withDuration: 0.15, delay: 0, usingSpringWithDamping: 0.2, initialSpringVelocity: 0.5, options: .curveEaseIn, animations:  {
+            self.femaleButton.transform = CGAffineTransform(scaleX: 0.92, y: 0.92)
+        }) { _ in
+            UIView.animate(withDuration: 0.15, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 4, animations: {
+                self.femaleButton.transform = CGAffineTransform(scaleX: 1, y: 1)
+            } , completion: nil)
+        }
+        self.maleButton.layer.borderWidth = 0
+        self.femaleButton.layer.borderWidth = 3
+        self.femaleButton.layer.borderColor = UIColor.systemPink.cgColor
+    }
 
 }
 
@@ -181,15 +230,22 @@ private extension RegistrationViewController {
     @objc func nextButtonTapped() {
         nextButton.tap()
 
-        UIView.animate(withDuration: 0.5, delay: 0, options: [], animations: {
+        UIView.animate(withDuration: 0.35, delay: 0, options: [], animations: {
             self.currentStack.transform = CGAffineTransform(translationX: -self.view.bounds.width, y: 0)
             self.stackToShow.transform = .identity
             self.stackToShow.alpha = 1
         }, completion:
             nil)
 
-        currentStack = enterAgeStack
-        stackToShow = chooseGenderStack
+        if currentStack == enterNameStack {
+            currentStack = enterAgeStack
+            stackToShow = chooseGenderStack
+        } else {
+            currentStack = chooseGenderStack
+            self.nextButton.backgroundColor = .green
+            self.nextButton.setTitle("Finish", for: .normal)
+
+        }
     }
 }
 

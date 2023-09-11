@@ -7,12 +7,12 @@
 //
 
 class RegistrationViewModel: RegistrationViewModelProtocol {
-//	private let apiClient: APIClient
-//	private let router: RegistrationRouterProtocol
-//
-//	required init(router: RegistrationRouterProtocol, apiClient: APIClient) {
-//		self.router = router
-//		self.apiClient = apiClient
-//		super.init()
-//	}
+
+    private let router: RegistrationRouterProtocol
+
+	required init(router: RegistrationRouterProtocol) {
+		self.router = router
+	}
+
+
 }

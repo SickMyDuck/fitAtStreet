@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol RegistrationViewModelProtocol {}
+protocol RegistrationViewModelProtocol: ViewModelProtocolBase {}
 
 protocol RegistrationAssemblyProtocol {}
 
