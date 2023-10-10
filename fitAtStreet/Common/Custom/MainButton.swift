@@ -39,7 +39,7 @@ private extension MainButton {
         setTitleColor(.white, for: .normal)
 
         backgroundColor = .systemBlue
-        titleLabel?.font = UIFont(name: "Roboto", size: 18)
+        titleLabel?.font = UIFont(name: "Roboto-Regular", size: 18)
         layer.cornerRadius = .medium
 
     }

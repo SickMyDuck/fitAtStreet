@@ -12,6 +12,8 @@ final class RegistrationViewController: BaseViewController<RegistrationViewModel
 
 
     // MARK: - Private Properties
+    private let progressView = ProgressBarView()
+
     private let enterNameStack = UIStackView()
     private let enterNameLabel = UILabel()
     private let enterNameTextField = TextField(placeholder: "")
@@ -20,7 +22,7 @@ final class RegistrationViewController: BaseViewController<RegistrationViewModel
     private let enterAgeLabel = UILabel()
     private let enterAgeTextField = TextField(placeholder: "")
 
-    private let chooseGenderStack = UIStackView()
+    private let selectGenderStack = UIStackView()
     private let chooseGenderLabel = UILabel()
 
     private let genderPickerStackView = UIStackView()
@@ -37,7 +39,9 @@ final class RegistrationViewController: BaseViewController<RegistrationViewModel
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         view.backgroundColor = .white
+
         configure()
+
     }
 }
 
@@ -47,9 +51,11 @@ private extension RegistrationViewController {
     func configure() {
         setupTexts()
 
+        setupProgressView(with: progressView)
+
         setupStackView(with: enterNameStack, firstView: true)
         setupStackView(with: enterAgeStack, firstView: false)
-        setupStackView(with: chooseGenderStack, firstView: false)
+        setupStackView(with: selectGenderStack, firstView: false)
 
         setupLabel(with: enterNameStack, label: enterNameLabel)
         setupTextField(with: enterNameStack, textField: enterNameTextField)
@@ -57,8 +63,8 @@ private extension RegistrationViewController {
         setupLabel(with: enterAgeStack, label: enterAgeLabel)
         setupEnterAgeTextField(with: enterAgeStack, textField: enterAgeTextField)
 
-        setupLabel(with: chooseGenderStack, label: chooseGenderLabel)
-        setupGenderPicker(with: chooseGenderStack)
+        setupLabel(with: selectGenderStack, label: chooseGenderLabel)
+        setupGenderPicker(with: selectGenderStack)
 
         setupNextButton()
         setInitialStackView()
@@ -74,6 +80,39 @@ private extension RegistrationViewController {
     func setInitialStackView() {
         currentStack = enterNameStack
         stackToShow = enterAgeStack
+    }
+
+}
+
+
+// MARK: - ProgressView Section
+
+private extension RegistrationViewController {
+
+    func setupProgressView(with progressView: ProgressBarView) {
+
+        let containerView = UIView()
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(containerView)
+
+        let progressBar = ProgressBarView()
+        progressBar.translatesAutoresizingMaskIntoConstraints = false
+        containerView.addSubview(progressBar)
+
+        NSLayoutConstraint.activate([
+            containerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            containerView.topAnchor.constraint(equalTo:view.topAnchor, constant: 100),
+            containerView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 4/5),
+            containerView.heightAnchor.constraint(equalToConstant: 80)
+        ])
+
+        NSLayoutConstraint.activate([
+            progressBar.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            progressBar.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            progressBar.topAnchor.constraint(equalTo: containerView.topAnchor),
+            progressBar.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
+        ])
+
     }
 
 }
@@ -239,9 +278,9 @@ private extension RegistrationViewController {
 
         if currentStack == enterNameStack {
             currentStack = enterAgeStack
-            stackToShow = chooseGenderStack
+            stackToShow = selectGenderStack
         } else {
-            currentStack = chooseGenderStack
+            currentStack = selectGenderStack
             self.nextButton.backgroundColor = .green
             self.nextButton.setTitle("Finish", for: .normal)
 

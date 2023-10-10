@@ -11,9 +11,6 @@ class BaseViewController<ViewModelT: ViewModelProtocolBase>: UIViewController {
     
     let viewModel: ViewModelT
 
-    var navigationProgress: Float { return 0 }
-
-
     init(_ viewModel: ViewModelT) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -28,27 +25,24 @@ class BaseViewController<ViewModelT: ViewModelProtocolBase>: UIViewController {
         Log.write(message: "DEINIT \(self)", category: .application, level: .debug)
     }
 
-    private func fixViewUnderNavBar() {
-        edgesForExtendedLayout = []
-    }
-
     override func loadView() {
         super.loadView()
         // FIXME: Change
-        view.backgroundColor = .white
-        self.setNeedsStatusBarAppearanceUpdate()
+   //     view.backgroundColor = .white
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        fixViewUnderNavBar()
+        let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: animated)
-        // FIXME: Change
-        navigationController?.navigationBar.barTintColor = .gray
+//        navigationController?.setNavigationBarHidden(false, animated: animated)
+//        // FIXME: Change
+//        navigationController?.navigationBar.barTintColor = .black
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -98,3 +92,4 @@ class BaseViewController<ViewModelT: ViewModelProtocolBase>: UIViewController {
         }
     }
 }
+

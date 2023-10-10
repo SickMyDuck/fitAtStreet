@@ -10,6 +10,9 @@
 		591E6CB42AAF9DC100C97D7F /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591E6CB32AAF9DC100C97D7F /* BaseViewController.swift */; };
 		591E6CB62AAFA87400C97D7F /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591E6CB52AAFA87400C97D7F /* Log.swift */; };
 		591E6CB82AAFABB300C97D7F /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591E6CB72AAFABB300C97D7F /* BaseViewModel.swift */; };
+		591E6CBB2AAFB64300C97D7F /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591E6CBA2AAFB64300C97D7F /* UIColor+Extension.swift */; };
+		591E6CBF2AB0FCAE00C97D7F /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591E6CBE2AB0FCAE00C97D7F /* UIImage+Extension.swift */; };
+		591E6CC12AB7581A00C97D7F /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591E6CC02AB7581A00C97D7F /* ProgressBarView.swift */; };
 		5931CCA92A9631C900371268 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5931CCA82A9631C900371268 /* AppDelegate.swift */; };
 		5931CCAB2A9631C900371268 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5931CCAA2A9631C900371268 /* SceneDelegate.swift */; };
 		5931CCAD2A9631C900371268 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5931CCAC2A9631C900371268 /* ViewController.swift */; };
@@ -57,6 +60,9 @@
 		591E6CB32AAF9DC100C97D7F /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		591E6CB52AAFA87400C97D7F /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		591E6CB72AAFABB300C97D7F /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		591E6CBA2AAFB64300C97D7F /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		591E6CBE2AB0FCAE00C97D7F /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		591E6CC02AB7581A00C97D7F /* ProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
 		5931CCA52A9631C900371268 /* fitAtStreet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fitAtStreet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5931CCA82A9631C900371268 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5931CCAA2A9631C900371268 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -121,6 +127,15 @@
 				591E6CB72AAFABB300C97D7F /* BaseViewModel.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		591E6CB92AAFB5DB00C97D7F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				591E6CBA2AAFB64300C97D7F /* UIColor+Extension.swift */,
+				591E6CBE2AB0FCAE00C97D7F /* UIImage+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		5931CC9C2A9631C800371268 = {
@@ -221,6 +236,7 @@
 		5931CCFA2A98AC0400371268 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				591E6CB92AAFB5DB00C97D7F /* Extensions */,
 				591E6CB22AAF9DB300C97D7F /* Base */,
 				5931CCFB2A98AC2400371268 /* Custom */,
 				5953C4372A9FE95E001FDBB8 /* Gender.swift */,
@@ -233,6 +249,7 @@
 			children = (
 				5931CCFC2A98AC4300371268 /* TextField.swift */,
 				5931CD012A9922D400371268 /* MainButton.swift */,
+				591E6CC02AB7581A00C97D7F /* ProgressBarView.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -382,6 +399,7 @@
 				5931CCE22A9635C500371268 /* WelcomeViewModel.swift in Sources */,
 				591E6CB62AAFA87400C97D7F /* Log.swift in Sources */,
 				5931CCA92A9631C900371268 /* AppDelegate.swift in Sources */,
+				591E6CBB2AAFB64300C97D7F /* UIColor+Extension.swift in Sources */,
 				5931CCFD2A98AC4300371268 /* TextField.swift in Sources */,
 				591E6CB42AAF9DC100C97D7F /* BaseViewController.swift in Sources */,
 				5931CCF52A9650E400371268 /* RegistrationViewController.swift in Sources */,
@@ -391,10 +409,12 @@
 				5931CCDE2A9635C500371268 /* WelcomeContract.swift in Sources */,
 				5931CCF32A9650E300371268 /* RegistrationContract.swift in Sources */,
 				5931CCE02A9635C500371268 /* WelcomeViewController.swift in Sources */,
+				591E6CC12AB7581A00C97D7F /* ProgressBarView.swift in Sources */,
 				5931CCF62A9650E400371268 /* RegistrationAssembly.swift in Sources */,
 				5931CCF72A9650E400371268 /* RegistrationViewModel.swift in Sources */,
 				5931CD002A99169900371268 /* CGFloat + Extension.swift in Sources */,
 				5931CD022A9922D400371268 /* MainButton.swift in Sources */,
+				591E6CBF2AB0FCAE00C97D7F /* UIImage+Extension.swift in Sources */,
 				591E6CB82AAFABB300C97D7F /* BaseViewModel.swift in Sources */,
 				5931CCDF2A9635C500371268 /* WelcomeRouter.swift in Sources */,
 				5931CCAB2A9631C900371268 /* SceneDelegate.swift in Sources */,

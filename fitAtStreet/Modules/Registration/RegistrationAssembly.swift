@@ -12,7 +12,7 @@ struct RegistrationAssembly {
     func assembly() -> UIViewController {
         let router = RegistrationRouter()
         let viewModel = RegistrationViewModel(router: router)
-        let viewController = RegistrationViewController(viewModel: viewModel)
+        let viewController = RegistrationViewController(viewModel)
         return viewController
     }
 }
